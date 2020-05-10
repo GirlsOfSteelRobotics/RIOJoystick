@@ -18,7 +18,7 @@ public class ExampleSubsystem extends SubsystemBase {
    * Creates a new ExampleSubsystem.
    */
   public ExampleSubsystem() {
-    theAnswer = new CodeJNI().myFunc();
+    theAnswer = CodeJNI.myFunc();
   }
 
   @Override
