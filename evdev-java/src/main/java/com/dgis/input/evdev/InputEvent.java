@@ -31,7 +31,8 @@ public class InputEvent {
 	/**
 	 * size of the input_event struct in bytes.
 	 */
-	public static final int STRUCT_SIZE_BYTES = 24;
+	// public static final int STRUCT_SIZE_BYTES = 24;
+	public static final int STRUCT_SIZE_BYTES = 16;
 	
 	/*
 	 * Event types
@@ -805,14 +806,14 @@ public class InputEvent {
 		short a,b,c,d;
 		a=shortBuffer.get();
 		b=shortBuffer.get();
-		c=shortBuffer.get();
-		d=shortBuffer.get();
-		e.time_sec = (d<<48) | (c<<32) | (b<<16) | a;
+		// c=shortBuffer.get();
+		// d=shortBuffer.get();
+		e.time_sec = (b<<16) | a; //(d<<48) | (c<<32) | (b<<16) | a;
 		a=shortBuffer.get();
 		b=shortBuffer.get();
-		c=shortBuffer.get();
-		d=shortBuffer.get();
-		e.time_usec = (d<<48) | (c<<32) | (b<<16) | a;
+		// c=shortBuffer.get();
+		// d=shortBuffer.get();
+		e.time_usec = (b<<16) | a; //(d<<48) | (c<<32) | (b<<16) | a;
 		e.type = shortBuffer.get();
 		e.code = shortBuffer.get();
 		c=shortBuffer.get();

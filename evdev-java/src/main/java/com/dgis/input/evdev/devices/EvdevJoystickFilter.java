@@ -93,17 +93,20 @@ public class EvdevJoystickFilter implements InputListener {
 	
 	@Override
 	public void event(InputEvent e) {
-		switch(e.type) {
-		case InputEvent.EV_KEY:
-			handleButton(e.code, e.value>0);
-			break;
-		case InputEvent.EV_ABS:
-			handleAxis(e.code, e.value);
-			break;
-		case InputEvent.EV_SYN:
-			dispatchEvents();
-		default: /* Unknown to us, ignore */
-		}
+		if (e == null)
+			System.out.println("Null event detected");
+		else
+			switch(e.type) {
+			case InputEvent.EV_KEY:
+				handleButton(e.code, e.value>0);
+				break;
+			case InputEvent.EV_ABS:
+				handleAxis(e.code, e.value);
+				break;
+			case InputEvent.EV_SYN:
+				dispatchEvents();
+			default: /* Unknown to us, ignore */
+			}
 	}
 	/**
 	 * Broadcast events for what changed since the last dispatchEvents().

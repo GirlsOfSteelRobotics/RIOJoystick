@@ -1,0 +1,18 @@
+cd src-test
+javac com/dgis/input/evdev/EvdevJoystickTest.java -cp ../build/classes/java/main
+scp -p EvdevJoystickTest.jar lvuser@roborio-3504-frc.local:
+
+cd ..
+scp -p build/libs/jniLibrary/shared/linuxathena/release/libJniLibrary.so lvuser@roborio-3504-frc.local:/usr/local/frc/third-party/lib/libevdev-java.so
+scp -p build/libs/evdev-java.jar lvuser@roborio-3504-frc.local:
+
+ssh admin@roborio-3504-frc.local
+# On the RoboRIO:
+  # Add lvuser to the "input" Linux group
+  # (Haven't tested this command yet)
+  sed -i '.bak' '/^input/s/$/lvuser/' /etc/group
+  exit
+
+ssh lvuser@roborio-3504-frc.local
+# On the RoboRIO:
+  /usr/local/frc/JRE/bin/java -XX:+UseConcMarkSweepGC -Djava.library.path=/usr/local/frc/third-party/lib -Djava.lang.invoke.stringConcat=BC_SB  -cp "EvdevJoystickTest.jar:evdev-java.jar" com.dgis.input.evdev.EvdevJoystickTest /dev/input/event0

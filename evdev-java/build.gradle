@@ -10,7 +10,7 @@ plugins {
 model {
     components {
         JniLibrary(JniNativeLibrarySpec) {
-            targetPlatform wpi.platforms.desktop
+            //targetPlatform wpi.platforms.desktop
             targetPlatform wpi.platforms.roborio
 
             javaCompileTasks << compileJava // set javaCompileTasks to any java compile tasks that contain your JNI classes. It is a list of tasks
