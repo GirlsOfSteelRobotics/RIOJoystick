@@ -1,9 +1,14 @@
 package frc.robot;
 
+import java.io.IOException;
+
+import com.dgis.input.evdev.devices.EvdevJoystickFilter;
+
 import edu.wpi.first.wpilibj.GenericHID;
 
 public class RIOGenericHID extends GenericHID {
 
+  private EvdevJoystickFilter evdev;
   private int m_deviceNum;
   private int m_outputs;
   @SuppressWarnings("unused")
@@ -23,6 +28,11 @@ public class RIOGenericHID extends GenericHID {
     super(0);
 
     m_deviceNum = deviceNum;
+    try {
+      evdev = new EvdevJoystickFilter("/dev/input/event" + deviceNum);
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
   }
 
   /**
