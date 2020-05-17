@@ -20,5 +20,6 @@ package frc.robot;
 public final class Constants {
     public static final int MOTOR_TALON_ID = 1;
     
-	public static final int GAMEPAD_PORT_NUMBER = 0;
+	public static final int JOYSTICK_PORT_NUMBER = 0;
+	public static final int GAMEPAD_DEVICE_NUMBER = 0;
 }

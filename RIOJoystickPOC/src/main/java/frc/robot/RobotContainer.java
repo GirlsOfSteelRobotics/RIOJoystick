@@ -28,7 +28,7 @@ public class RobotContainer {
   private final Motor m_motor = new Motor();
 
   // In autonomous mode, spin the motor slowly until disabled
-  private final MotorStart m_autoCommand = new MotorStart(m_motor, 0.25, false);
+  private final MotorStart m_autoCommand = new MotorStart(m_motor, 0.5, false);
 
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
@@ -45,11 +45,17 @@ public class RobotContainer {
    * passing it to a {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    Joystick gamepad = new Joystick(Constants.GAMEPAD_PORT_NUMBER);
+    final Joystick joystick = new Joystick(Constants.JOYSTICK_PORT_NUMBER);
 
-    new JoystickButton(gamepad, 1).whileHeld(new MotorStart(m_motor, 0.5, true));
-    new JoystickButton(gamepad, 2).whenPressed(new MotorStart(m_motor, 0.5, false));
+    new JoystickButton(joystick, 1).whileHeld(new MotorStart(m_motor, 0.75, true));
+    new JoystickButton(joystick, 2).whenPressed(new MotorStart(m_motor, 0.25, false));
+    new JoystickButton(joystick, 3).whenPressed(new MotorStop(m_motor));
+
+    final RIOGenericHID gamepad = new RIOGenericHID(Constants.GAMEPAD_DEVICE_NUMBER);
+    new JoystickButton(gamepad, 1).whileHeld(new MotorStart(m_motor, 0.75, true));
+    new JoystickButton(gamepad, 2).whenPressed(new MotorStart(m_motor, 0.25, false));
     new JoystickButton(gamepad, 3).whenPressed(new MotorStop(m_motor));
+
   }
 
   /**
