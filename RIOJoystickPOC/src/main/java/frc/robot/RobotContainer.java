@@ -51,7 +51,7 @@ public class RobotContainer {
     new JoystickButton(joystick, 2).whenPressed(new MotorStart(m_motor, 0.25, false));
     new JoystickButton(joystick, 3).whenPressed(new MotorStop(m_motor));
 
-    final RIOGenericHID gamepad = new RIOGenericHID(Constants.GAMEPAD_DEVICE_NUMBER);
+    final RIOGenericHID gamepad = new RIOJoystick(Constants.GAMEPAD_DEVICE_NUMBER);
     new JoystickButton(gamepad, 1).whileHeld(new MotorStart(m_motor, 0.75, true));
     new JoystickButton(gamepad, 2).whenPressed(new MotorStart(m_motor, 0.25, false));
     new JoystickButton(gamepad, 3).whenPressed(new MotorStop(m_motor));

@@ -6,7 +6,7 @@ import com.dgis.input.evdev.devices.EvdevJoystickFilter;
 
 import edu.wpi.first.wpilibj.GenericHID;
 
-public class RIOGenericHID extends GenericHID {
+public abstract class RIOGenericHID extends GenericHID {
 
   private EvdevJoystickFilter evdev;
   private int m_deviceNum;
@@ -41,9 +41,7 @@ public class RIOGenericHID extends GenericHID {
    * @param hand which hand, left or right
    * @return the x position
    */
-  public double getX(Hand hand) {
-    return 0.5;
-  }
+  public abstract double getX(Hand hand);
 
   /**
    * Get the y position of the HID.
@@ -51,9 +49,7 @@ public class RIOGenericHID extends GenericHID {
    * @param hand which hand, left or right
    * @return the y position
    */
-  public double getY(Hand hand) {
-    return -0.25;
-  }
+  public abstract double getY(Hand hand);
 
   /**
    * Get the button value (starting at button 1).
