@@ -157,5 +157,7 @@ gradle-app.setting
 bin/
 imgui.ini
 
+# Preserve the libs directory for this repo
+!libs/**
 
 # End of https://www.gitignore.io/api/c++,java,linux,macos,gradle,windows,visualstudiocode
