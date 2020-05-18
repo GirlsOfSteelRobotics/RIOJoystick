@@ -24,7 +24,7 @@ package com.dgis.input.evdev;
  * @author Giacomo Ferrari
  */
 
-interface InputAxisParameters {
+public interface InputAxisParameters {
 
 	public int getValue();
 
