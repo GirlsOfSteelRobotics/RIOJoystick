@@ -58,7 +58,7 @@ dependencies {
     // upon debugging
     simulation wpi.deps.sim.gui(wpi.platforms.desktop, false)
 
-    nativeLib files('libs/jniLibrary/shared/linuxathena/release/libJniLibrary.so')
+    nativeLib files('libs/jniLibrary/shared/release/libJniLibrary.so')
     compile fileTree(dir: 'libs', include: ['*.jar'])
 }
 

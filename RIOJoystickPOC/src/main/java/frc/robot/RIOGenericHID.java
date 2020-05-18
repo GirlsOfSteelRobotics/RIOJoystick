@@ -90,6 +90,8 @@ public abstract class RIOGenericHID extends GenericHID implements InputListener 
     m_axesCount = supportedAxes == null ? 0 : supportedAxes.size();
     m_buttonsCount = supportedKeys == null ? 0 : supportedKeys.size();
 
+    System.out.printf("RIOGenericHID: found %d axes and %d buttons\n", m_axesCount, m_buttonsCount);
+
     m_buttonEventCodes.addAll(supportedKeys);
     m_axisEventCodes.addAll(supportedAxes);
 
@@ -105,8 +107,9 @@ public abstract class RIOGenericHID extends GenericHID implements InputListener 
      * min possible values. Buttons are initialized to the unpressed state.
      */
     for (int i = 0; i < m_axesCount; i++) {
-      int axisCode = m_axisEventCodes.get(i);
-      m_axisStates[i] = (m_device.getAxisParameters(axisCode).getMax() - m_device.getAxisParameters(axisCode).getMin()) / 2;
+      // int axisCode = m_axisEventCodes.get(i);
+      // m_axisStates[i] = (m_device.getAxisParameters(axisCode).getMax() - m_device.getAxisParameters(axisCode).getMin()) / 2;
+      m_axisStates[i] = 127;
     }
     for (int i = 0; i < m_buttonsCount; i++)
       m_buttonStates[i] = m_buttonPressed[i] = m_buttonReleased[i] = false;
