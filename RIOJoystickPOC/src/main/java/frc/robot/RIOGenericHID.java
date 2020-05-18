@@ -104,8 +104,10 @@ public abstract class RIOGenericHID extends GenericHID implements InputListener 
      * Initialize the starting values of all axis to the midpoint between max and
      * min possible values. Buttons are initialized to the unpressed state.
      */
-    for (int i = 0; i < m_axesCount; i++)
-      m_axisStates[i] = (m_device.getAxisParameters(i).getMax() - m_device.getAxisParameters(i).getMin()) / 2;
+    for (int i = 0; i < m_axesCount; i++) {
+      int axisCode = m_axisEventCodes.get(i);
+      m_axisStates[i] = (m_device.getAxisParameters(axisCode).getMax() - m_device.getAxisParameters(axisCode).getMin()) / 2;
+    }
     for (int i = 0; i < m_buttonsCount; i++)
       m_buttonStates[i] = m_buttonPressed[i] = m_buttonReleased[i] = false;
 
